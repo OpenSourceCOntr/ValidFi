@@ -1,0 +1,56 @@
+import { Module } from '@nestjs/common';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { CacheModule } from '@nestjs/cache-manager';
+import { redisStore } from 'cache-manager-redis-store';
+import { IdentityModule } from './identity/identity.module';
+import { VerificationModule } from './verification/verification.module';
+import { AccessControlModule } from './access-control/access-control.module';
+import { DataSharingModule } from './data-sharing/data-sharing.module';
+import { AuthModule } from './auth/auth.module';
+import { IpfsModule } from './ipfs/ipfs.module';
+import { AiModule } from './ai/ai.module';
+import { SorobanModule } from './soroban/soroban.module';
+
+@Module({
+  imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
+    TypeOrmModule.forRootAsync({
+      imports: [ConfigModule],
+      useFactory: (configService: ConfigService) => ({
+        type: 'postgres',
+        host: configService.get('DB_HOST'),
+        port: configService.get('DB_PORT'),
+        username: configService.get('DB_USERNAME'),
+        password: configService.get('DB_PASSWORD'),
+        database: configService.get('DB_DATABASE'),
+        entities: [__dirname + '/**/*.entity{.ts,.js}'],
+        synchronize: configService.get('NODE_ENV') === 'development',
+        logging: configService.get('NODE_ENV') === 'development',
+      }),
+      inject: [ConfigService],
+    }),
+    CacheModule.registerAsync({
+      imports: [ConfigModule],
+      useFactory: (configService: ConfigService) => ({
+        store: redisStore,
+        host: configService.get('REDIS_HOST'),
+        port: configService.get('REDIS_PORT'),
+        password: configService.get('REDIS_PASSWORD'),
+        ttl: 3600,
+      }),
+      inject: [ConfigService],
+    }),
+    IdentityModule,
+    VerificationModule,
+    AccessControlModule,
+    DataSharingModule,
+    AuthModule,
+    IpfsModule,
+    AiModule,
+    SorobanModule,
+  ],
+})
+export class AppModule {}
