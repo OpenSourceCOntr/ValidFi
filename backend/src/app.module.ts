@@ -11,6 +11,7 @@ import { AuthModule } from './auth/auth.module';
 import { IpfsModule } from './ipfs/ipfs.module';
 import { AiModule } from './ai/ai.module';
 import { SorobanModule } from './soroban/soroban.module';
+import { IndexerModule } from './indexer/indexer.module';
 
 @Module({
   imports: [
@@ -51,6 +52,7 @@ import { SorobanModule } from './soroban/soroban.module';
     IpfsModule,
     AiModule,
     SorobanModule,
+    IndexerModule,
   ],
 })
 export class AppModule {}
