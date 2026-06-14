@@ -5,7 +5,7 @@ import './globals.css';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'SecureData - Decentralized Identity Verification',
+  title: 'ValidFi - Decentralized Identity Verification',
   description: 'Secure and private identity verification on Stellar Soroban',
 };
 

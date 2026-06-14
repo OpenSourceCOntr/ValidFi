@@ -2,22 +2,23 @@
 
 import { useState } from 'react';
 import { WalletConnect } from '@/components/wallet-connect';
-import { IdentityVault } from '@/components/identity-vault';
-import { VerificationCenter } from '@/components/verification-center';
-import { SecureSharing } from '@/components/secure-sharing';
+import { HealthCredentialVault } from '@/components/health-credential-vault';
+import { VaccinationVerificationCenter } from '@/components/vaccination-verification-center';
+import { CredentialSharing } from '@/components/credential-sharing';
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState('vault');
   const [walletAddress, setWalletAddress] = useState<string | null>(null);
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
+    <main className="min-h-screen bg-gradient-to-br from-green-900 via-teal-900 to-blue-900">
       <div className="container mx-auto px-4 py-8">
         <header className="mb-8">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-4xl font-bold text-white mb-2">SecureData</h1>
-              <p className="text-blue-200">Decentralized Identity Verification on Stellar Soroban</p>
+              <h1 className="text-4xl font-bold text-white mb-2">ValidFi</h1>
+              <p className="text-green-200">Tamper-Proof Health Credentials on Stellar Soroban</p>
+              <p className="text-green-300 text-sm mt-1">Prove vaccination status with zero-knowledge proofs — no names, no birthdates, no medical history exposed</p>
             </div>
             <WalletConnect onConnect={setWalletAddress} />
           </div>
@@ -28,17 +29,17 @@ export default function Home() {
             <div className="bg-white/10 backdrop-blur-lg rounded-lg p-1 mb-6">
               <nav className="flex space-x-1">
                 {[
-                  { id: 'vault', label: 'Identity Vault' },
-                  { id: 'verification', label: 'Verification Center' },
-                  { id: 'sharing', label: 'Secure Sharing' },
+                  { id: 'vault', label: 'Health Credential Vault' },
+                  { id: 'verification', label: 'Vaccination Verification' },
+                  { id: 'sharing', label: 'Credential Sharing' },
                 ].map((tab) => (
                   <button
                     key={tab.id}
                     onClick={() => setActiveTab(tab.id)}
                     className={`flex-1 px-4 py-3 rounded-md font-medium transition-all ${
                       activeTab === tab.id
-                        ? 'bg-blue-600 text-white'
-                        : 'text-blue-200 hover:bg-white/5'
+                        ? 'bg-green-600 text-white'
+                        : 'text-green-200 hover:bg-white/5'
                     }`}
                   >
                     {tab.label}
@@ -48,16 +49,16 @@ export default function Home() {
             </div>
 
             <div className="bg-white/10 backdrop-blur-lg rounded-lg p-6">
-              {activeTab === 'vault' && <IdentityVault walletAddress={walletAddress} />}
-              {activeTab === 'verification' && <VerificationCenter walletAddress={walletAddress} />}
-              {activeTab === 'sharing' && <SecureSharing walletAddress={walletAddress} />}
+              {activeTab === 'vault' && <HealthCredentialVault walletAddress={walletAddress} />}
+              {activeTab === 'verification' && <VaccinationVerificationCenter walletAddress={walletAddress} />}
+              {activeTab === 'sharing' && <CredentialSharing walletAddress={walletAddress} />}
             </div>
           </>
         ) : (
           <div className="bg-white/10 backdrop-blur-lg rounded-lg p-12 text-center">
             <h2 className="text-2xl font-semibold text-white mb-4">Connect Your Wallet</h2>
-            <p className="text-blue-200 mb-6">
-              Connect your Stellar wallet to start managing your digital identities securely
+            <p className="text-green-200 mb-6">
+              Connect your Stellar wallet to start managing your health credentials securely
             </p>
             <div className="flex justify-center gap-4">
               <div className="bg-white/10 rounded-lg p-4">
