@@ -1,6 +1,6 @@
-# Zero-Knowledge Proofs for SecureData
+# Zero-Knowledge Proofs for ValidFi
 
-This directory contains the Zero-Knowledge proof infrastructure for SecureData.
+This directory contains the Zero-Knowledge proof infrastructure for ValidFi.
 
 ## Overview
 

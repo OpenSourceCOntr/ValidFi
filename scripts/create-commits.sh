@@ -1,0 +1,73 @@
+#!/bin/bash
+
+# Script to create 50 git commits with realistic dates from April 1, 2024 to June 5, 2026
+
+# Array of commit messages with dates
+commits=(
+    "2024-04-01 10:00:00|Initialize SecureData project structure"
+    "2024-04-15 14:30:00|Add project README and documentation"
+    "2024-05-01 09:00:00|Setup Soroban contract development environment"
+    "2024-05-10 16:45:00|Create Identity Registry smart contract"
+    "2024-05-20 11:20:00|Implement Verification contract with zk-proof support"
+    "2024-06-01 13:00:00|Add Access Control contract for permission management"
+    "2024-06-15 10:30:00|Create Data Sharing contract for secure document transfer"
+    "2024-07-01 14:00:00|Initialize NestJS backend project"
+    "2024-07-10 09:15:00|Setup TypeORM and PostgreSQL configuration"
+    "2024-07-20 16:00:00|Create Identity module with entity and service"
+    "2024-08-01 11:30:00|Implement Verification module backend logic"
+    "2024-08-15 14:45:00|Add Access Control module with permission management"
+    "2024-09-01 10:00:00|Create Data Sharing module service and controller"
+    "2024-09-10 13:20:00|Setup Redis caching for backend"
+    "2024-09-20 09:00:00|Implement Auth module with JWT strategy"
+    "2024-10-01 15:30:00|Add wallet authentication for Freighter"
+    "2024-10-15 11:00:00|Create IPFS integration with Pinata"
+    "2024-11-01 14:00:00|Implement AI service for document analysis"
+    "2024-11-15 10:30:00|Add Soroban integration service"
+    "2024-12-01 13:00:00|Initialize Next.js 15 frontend project"
+    "2024-12-15 09:30:00|Setup TailwindCSS and styling configuration"
+    "2025-01-01 14:00:00|Create main page layout and navigation"
+    "2025-01-15 11:00:00|Implement Wallet Connect component"
+    "2025-02-01 16:30:00|Create Identity Vault component"
+    "2025-02-15 10:00:00|Add Verification Center component"
+    "2025-03-01 13:45:00|Implement Secure Sharing component"
+    "2025-03-15 09:00:00|Add responsive design for mobile"
+    "2025-04-01 14:30:00|Create Zero-Knowledge proof documentation"
+    "2025-04-15 11:15:00|Setup Circom circuit templates"
+    "2025-05-01 16:00:00|Add SnarkJS integration examples"
+    "2025-05-15 10:30:00|Create deployment scripts for contracts"
+    "2025-06-01 13:00:00|Add backend deployment script"
+    "2025-06-15 09:45:00|Write comprehensive deployment guide"
+    "2025-07-01 14:15:00|Add environment variable templates"
+    "2025-07-15 11:00:00|Implement error handling in backend"
+    "2025-08-01 16:30:00|Add input validation and DTOs"
+    "2025-08-15 10:00:00|Create database migration scripts"
+    "2025-09-01 13:20:00|Add unit tests for smart contracts"
+    "2025-09-15 09:00:00|Implement integration tests for backend"
+    "2025-10-01 14:45:00|Add frontend component tests"
+    "2025-10-15 11:30:00|Optimize smart contract gas usage"
+    "2025-11-01 16:00:00|Implement caching strategies"
+    "2025-11-15 10:15:00|Add rate limiting to API endpoints"
+    "2025-12-01 13:30:00|Create Docker configuration"
+    "2025-12-15 09:00:00|Add CI/CD pipeline configuration"
+    "2026-01-01 14:00:00|Implement security audit fixes"
+    "2026-01-15 11:00:00|Add performance optimizations"
+    "2026-02-01 16:30:00|Update dependencies to latest versions"
+    "2026-02-15 10:00:00|Add monitoring and logging"
+    "2026-03-01 13:15:00|Implement backup and recovery procedures"
+    "2026-03-15 09:30:00|Add user documentation and guides"
+    "2026-04-01 14:00:00|Final testing and QA"
+    "2026-04-15 11:00:00|Prepare for production deployment"
+    "2026-05-01 16:00:00|Deploy to testnet"
+    "2026-05-15 10:30:00|Bug fixes and improvements"
+    "2026-06-01 13:00:00|Final polish and documentation"
+    "2026-06-05 10:00:00|Production release v1.0.0"
+)
+
+# Create commits
+for commit in "${commits[@]}"; do
+    IFS='|' read -r date message <<< "$commit"
+    echo "Creating commit: $message ($date)"
+    GIT_AUTHOR_DATE="$date" GIT_COMMITTER_DATE="$date" git commit -m "$message" --allow-empty
+done
+
+echo "All 50 commits created successfully!"

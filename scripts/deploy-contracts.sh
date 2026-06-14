@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# SecureData Smart Contract Deployment Script
+# ValidFi Smart Contract Deployment Script
 # This script deploys the Soroban smart contracts to the specified network
 
 set -e

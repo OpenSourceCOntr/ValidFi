@@ -1,7 +1,7 @@
 {
-  "name": "securedata-backend",
+  "name": "validfi-backend",
   "version": "0.0.1",
-  "description": "SecureData Backend API",
+  "description": "ValidFi Backend API",
   "author": "",
   "private": true,
   "license": "MIT",

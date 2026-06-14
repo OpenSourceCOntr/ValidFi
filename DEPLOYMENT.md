@@ -1,6 +1,6 @@
 # Deployment Guide
 
-This guide covers deploying the SecureData DApp to production.
+This guide covers deploying the ValidFi DApp to production.
 
 ## Prerequisites
 

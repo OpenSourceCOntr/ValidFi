@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# SecureData Backend Deployment Script
+# ValidFi Backend Deployment Script
 # This script deploys the NestJS backend to production
 
 set -e
