@@ -39,9 +39,7 @@ pub fn execute_upgrade(env: &Env, new_wasm_hash: BytesN<32>) {
         .get(&VERSION_KEY)
         .unwrap_or(INITIAL_VERSION);
     env.deployer().update_current_contract_wasm(new_wasm_hash);
-    env.storage()
-        .instance()
-        .set(&VERSION_KEY, &(version + 1));
+    env.storage().instance().set(&VERSION_KEY, &(version + 1));
 }
 
 /// v1 → v2 migration: initialise the default credential TTL (30 days).
@@ -51,12 +49,8 @@ pub fn run_migration_v2(env: &Env) {
         panic_with_error!(env, Error::AlreadyInitialized);
     }
     // New v2 global: default credential time-to-live in seconds
-    env.storage()
-        .instance()
-        .set(&"cred_ttl", &2_592_000u64);
-    env.storage()
-        .instance()
-        .set(&MIGRATED_V2_KEY, &true);
+    env.storage().instance().set(&"cred_ttl", &2_592_000u64);
+    env.storage().instance().set(&MIGRATED_V2_KEY, &true);
 }
 
 pub fn get_version(env: &Env) -> u32 {
